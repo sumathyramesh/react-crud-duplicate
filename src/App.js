@@ -48,31 +48,49 @@ class App extends Component {
     this.setState(newState);
   }
 
+  createPerson = () => {
+    const newState = JSON.parse(JSON.stringify(this.state));
+    const newPerson = {
+      id: newState.people.reduce((acc, cur) => Math.max(acc, cur.id), -1) + 1,
+      firstName: '',
+      lastName: ''
+    };
+    newState.people.push(newPerson);
+    newState.selectedPersonId = newPerson.id;
+    newState.view = 'add';
+    this.setState(newState);
+  }
+
   get selectedPerson() {
     return this.state.people.find(p => p.id === this.state.selectedPersonId);
   }
 
-  get view() {
+  render() {
+    console.log('render', this.state);
     switch (this.state.view) {
       case 'list':
         return <PersonList
           people={this.state.people}
+          newPerson={this.createPerson}
           personSelected={p => this.personSelected(p)}
         />
       case 'edit':
         return <PersonEdit
           person={this.selectedPerson}
-          update={(person) => this.personUpdated(person)}
-          delete={(person) => this.personDeleted(person)}
+          update={(p) => this.personUpdated(p)}
+          delete={(p) => this.personDeleted(p)}
           cancel={this.cancel}
+        />
+      case 'add':
+        return <PersonEdit
+          person={this.selectedPerson}
+          update={(p) => this.personUpdated(p)}
+          delete={(p) => this.personDeleted(p)}
+          cancel={(p) => this.personDeleted(p)}
         />
       default:
         throw new Error('Unknown view: ', this.state.view)
     }
-  }
-
-  render() {
-    return this.view;
   }
 }
 

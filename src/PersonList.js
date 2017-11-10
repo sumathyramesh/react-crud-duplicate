@@ -12,9 +12,12 @@ class PersonList extends Component {
 
     render() {
         return (
-            <ul>
-                {this.people}
-            </ul>
+            <div>
+                <ul>
+                    {this.people}
+                </ul>
+                <input type="button" onClick={() => this.props.newPerson()} value="New Person" />
+            </div>
         );
     }
 }
