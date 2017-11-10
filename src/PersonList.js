@@ -4,7 +4,7 @@ class PersonList extends Component {
 
     get people() {
         return this.props.people.map((person, idx) => {
-            return (<a key={idx} href="#" onClick={() => this.props.personSelected(person)}>
+            return (<a key={idx} href="#" onClick={() => this.props.personSelected(person.id)}>
                 <li>{person.firstName} {person.lastName}</li>
             </a>)
         });

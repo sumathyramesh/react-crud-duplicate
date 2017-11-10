@@ -4,11 +4,10 @@ class PersonEdit extends Component {
 
     constructor(props) {
         super(props);
-        this.state = JSON.parse(JSON.stringify(props.person))
+        this.state = JSON.parse(JSON.stringify(props.person));
     }
 
     changed = (event) => {
-        console.log('test')
         const newState = {};
         newState[event.target.name] = event.target.value;
         this.setState(Object.assign({}, this.state, newState));
@@ -35,8 +34,8 @@ class PersonEdit extends Component {
                         onChange={this.changed}
                     />
                 </div>
-                <input type="button" onClick={this.props.update} value="Save" />
-                <input type="button" onClick={this.props.cancel} value="Cancel" />
+                <input type="button" onClick={() => this.props.update(this.state)} value="Save" />
+                <input type="button" onClick={() => this.props.cancel()} value="Cancel" />
             </div>
         );
     }

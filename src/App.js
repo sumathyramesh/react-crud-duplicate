@@ -9,33 +9,39 @@ class App extends Component {
     super(props);
     this.state = {
       view: 'list',
-      selectedPerson: undefined,
+      selectedPersonId: undefined,
       people: [
-        { firstName: 'Brent', lastName: 'Gardner' },
-        { firstName: 'Rachel', lastName: 'Koldenhoven' }
+        { id: 1, firstName: 'Brent', lastName: 'Gardner' },
+        { id: 2, firstName: 'Rachel', lastName: 'Koldenhoven' }
       ]
     }
   }
 
-  personSelected(person) {
+  personSelected(personId) {
     const newState = JSON.parse(JSON.stringify(this.state));
-    newState.selectedPerson = person;
+    newState.selectedPersonId = personId;
     newState.view = 'edit';
     this.setState(newState);
   }
 
   personUpdated(person) {
     const newState = JSON.parse(JSON.stringify(this.state));
-    newState.selectedPerson = undefined;
+    const newPerson = newState.people.find(p => p.id === person.id);
+    Object.assign(newPerson, person);
+    newState.selectedPersonId = undefined;
     newState.view = 'list';
     this.setState(newState);
   }
 
   cancel = () => {
     const newState = JSON.parse(JSON.stringify(this.state));
-    newState.selectedPerson = undefined;
+    newState.selectedPersonId = undefined;
     newState.view = 'list';
     this.setState(newState);
+  }
+
+  get selectedPerson() {
+    return this.state.people.find(p => p.id === this.state.selectedPersonId);
   }
 
   get view() {
@@ -47,8 +53,8 @@ class App extends Component {
         />
       case 'edit':
         return <PersonEdit
-          person={this.state.selectedPerson}
-          update={() => this.personUpdated}
+          person={this.selectedPerson}
+          update={(person) => this.personUpdated(person)}
           cancel={this.cancel}
         />
       default:
