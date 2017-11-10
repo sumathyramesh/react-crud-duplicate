@@ -33,6 +33,14 @@ class App extends Component {
     this.setState(newState);
   }
 
+  personDeleted(person) {
+    const newState = JSON.parse(JSON.stringify(this.state));
+    newState.people = newState.people.filter(p => p.id !== person.id);
+    newState.selectedPersonId = undefined;
+    newState.view = 'list';
+    this.setState(newState);
+  }
+
   cancel = () => {
     const newState = JSON.parse(JSON.stringify(this.state));
     newState.selectedPersonId = undefined;
@@ -55,6 +63,7 @@ class App extends Component {
         return <PersonEdit
           person={this.selectedPerson}
           update={(person) => this.personUpdated(person)}
+          delete={(person) => this.personDeleted(person)}
           cancel={this.cancel}
         />
       default:

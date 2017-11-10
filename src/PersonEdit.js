@@ -35,6 +35,7 @@ class PersonEdit extends Component {
                     />
                 </div>
                 <input type="button" onClick={() => this.props.update(this.state)} value="Save" />
+                <input type="button" onClick={() => this.props.delete(this.state)} value="Delete" />
                 <input type="button" onClick={() => this.props.cancel()} value="Cancel" />
             </div>
         );
