@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PersonList from './PersonList';
 import './styles/App.css';
-
-const uuid = require('uuid4');
+import Nav from './Nav';
+import './skeleton.css';
 
 class App extends Component {
 
@@ -17,11 +17,13 @@ class App extends Component {
   }
 
   render() {
-    return (
-        <div className="Main">
-            <PersonList people={this.state.people} />
-        </div>
-    ); 
+    return(
+      <div>
+        <Nav/>
+        <PersonList people={this.state.people} />
+        <button className="button-primary">Add a Person</button>
+      </div>
+    );
   }
 }
 
