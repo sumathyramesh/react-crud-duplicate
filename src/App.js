@@ -64,6 +64,14 @@ class App extends Component {
         super.setState(newState);    
     }
 
+    deletePerson = () => {
+        const newState = this.state;
+        newState.people = this.state.people.filter(person => person.id !== this.state.selectedPerson.id);
+        newState.view = 'PersonList';
+        newState.selectedPerson = undefined;
+        super.setState(newState); 
+    }
+
     guid = () => {
         function s4() {
           return Math.floor((1 + Math.random()) * 0x10000)
@@ -92,7 +100,8 @@ class App extends Component {
         } else {
             currentView = <PersonEdit selectedPerson={this.state.selectedPerson}
             saveChanges={this.saveChanges}
-            goHome={this.goHome} />
+            goHome={this.goHome}
+            deletePerson={this.deletePerson} />
         }
 
         return (

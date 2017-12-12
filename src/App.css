@@ -31,3 +31,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+button.button-primary.danger {
+    background-color: #4CB963;
+}

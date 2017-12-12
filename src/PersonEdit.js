@@ -35,6 +35,7 @@ class PersonEdit extends Component {
                 <div className="PersonEditBtns">
                     <button className="button-primary" onClick={() => this.props.saveChanges(this.state)}>SAVE</button>
                     <button className="button-primary" onClick={this.props.goHome}>CANCEL</button>
+                    <button className="button-primary danger" onClick={this.props.deletePerson}>DELETE PERSON</button>
                 </div>
             </div>
         );
