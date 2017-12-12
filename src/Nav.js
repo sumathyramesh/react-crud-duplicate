@@ -4,7 +4,7 @@ class Nav extends Component {
 
   render() {
     return (
-       <div>
+       <div className="Nav">
            <h1>Welcome to Person List</h1>
        </div>
     );

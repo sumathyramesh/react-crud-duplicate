@@ -3,6 +3,12 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: flex;
   flex-direction: column;
+  background-color: #F7F9F9;
+  color: #22333B;
+}
+
+.Nav {
+  color: #22333B; 
 }
 
 .main {
@@ -19,4 +25,9 @@ body {
   display: flex;
   flex-direction: column;
   width: 50%;
+}
+
+.PersonEditBtns {
+  display: flex;
+  justify-content: space-between;
 }

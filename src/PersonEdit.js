@@ -2,20 +2,43 @@ import React, { Component } from 'react';
 
 class PersonEdit extends Component {
 
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            firstName: props.selectedPerson.firstName,
+            lastName: props.selectedPerson.lastName,
+            id: props.selectedPerson.id
+        }
+    }
 
+    changeFirstName = (event) => {
+        const newState = this.state;
+        newState.firstName = event.target.value; // text in the box
+        super.setState(newState);        
+    }
+    
+    changeLastName = (event) => {
+        const newState = this.state;
+        newState.lastName = event.target.value; // text in the box
+        super.setState(newState);        
+    }
 
-  render() {
-    return (
-        <div className="PersonEdit">
-            <span>Editing Person</span>
-            <input type="text" name="firstName" value={this.props.selectedPerson.firstName}
-            onChange={this.props.changeFirstName} />
-            <input type="text" name="lastName" value={this.props.selectedPerson.lastName}
-            onChange={this.props.changeLastName} />
-        </div>
-    );
-  }
+    render() {
+        return (
+            <div className="PersonEdit">
+                <span>Editing Person</span>
+                <input type="text" name="firstName" value={this.state.firstName}
+                onChange={this.changeFirstName} />
+                <input type="text" name="lastName" value={this.state.lastName}
+                onChange={this.changeLastName} />
+                <div className="PersonEditBtns">
+                    <button className="button-primary" onClick={() => this.props.saveChanges(this.state)}>SAVE</button>
+                    <button className="button-primary" onClick={this.props.goHome}>CANCEL</button>
+                </div>
+            </div>
+        );
+    }
 }
 
 export default PersonEdit;
