@@ -9,8 +9,10 @@ class PersonList extends Component {
             {this.props.people.map((person) =>
             <li key={person.id} onClick={() => this.props.goToPersonEdit(person)}>{person.firstName} {person.lastName}</li>)}
         </ul>
-        <button className="button-primary">Add a Person</button>
-      </div>
+        <button className="button-primary" onClick={() => this.props.goToPersonAdd()}>
+        Add a Person
+        </button>
+      </div>          
     );
   }
 }

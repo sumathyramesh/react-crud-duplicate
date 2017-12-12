@@ -21,13 +21,13 @@ body {
   list-style-type: none;
 }
 
-.PersonEdit {
+.PersonEdit, .PersonAdd {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-.PersonEditBtns {
+.PersonEditBtns, .PersonAddBtns {
   display: flex;
   justify-content: space-between;
 }
