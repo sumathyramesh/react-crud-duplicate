@@ -6,9 +6,9 @@ class Nav extends Component {
     return (
         <div className="Nav">
             <div className="IconRow">
-                <img className="myIcon" src={require("./assets/person.svg")} />
-                <img className="myIcon" src={require("./assets/person.svg")} />
-                <img className="myIcon" src={require("./assets/person.svg")} />
+                <img className="myIcon" src={require("./assets/person.svg")} alt="person icon" />
+                <img className="myIcon" src={require("./assets/person.svg")} alt="person icon" />
+                <img className="myIcon" src={require("./assets/person.svg")} alt="person icon" />
             </div>
             <h1>Welcome to Person List</h1>
         </div>

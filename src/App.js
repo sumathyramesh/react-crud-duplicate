@@ -6,6 +6,8 @@ import Nav from './Nav';
 import './styles/App.css';
 import './skeleton.css';
 
+const uuid = require('uuid4');
+
 class App extends Component {
 
     constructor(props) {
@@ -72,20 +74,10 @@ class App extends Component {
         super.setState(newState); 
     }
 
-    guid = () => {
-        function s4() {
-          return Math.floor((1 + Math.random()) * 0x10000)
-            .toString(16)
-            .substring(1);
-        }
-        return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-          s4() + '-' + s4() + s4() + s4();
-      }
-
     saveNewPerson = (newPerson) => {
         const newState = JSON.parse(JSON.stringify(this.state));
-        newPerson.id = this.guid();
-        newState.people.push(newPerson);
+        newPerson.id = uuid();
+        newState.people.push(newPerson);  
         newState.view = 'PersonList';
         newState.selectedPerson = undefined;
         super.setState(newState);
