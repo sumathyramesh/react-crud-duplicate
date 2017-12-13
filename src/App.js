@@ -21,20 +21,20 @@ class App extends Component {
     }
 
     goToPersonEdit = (person) => {
-        const newState = this.state;
+        const newState = JSON.parse(JSON.stringify(this.state));
         newState.view = 'PersonEdit';
         newState.selectedPerson = person;
         super.setState(newState);
     }
     
     goToPersonAdd = () => {
-        const newState = this.state;
+        const newState = JSON.parse(JSON.stringify(this.state));
         newState.view = 'PersonAdd';
         super.setState(newState);
     }
 
     goHome = () => {
-        const newState = this.state;
+        const newState = JSON.parse(JSON.stringify(this.state));
         newState.view = 'PersonList';
         newState.selectedPerson = undefined;
         super.setState(newState);
@@ -53,7 +53,7 @@ class App extends Component {
     }
 
     saveChanges = (updatedPerson) => {
-        const newState = this.state;
+        const newState = JSON.parse(JSON.stringify(this.state));
         newState.people = this.state.people.map((person) => {
             if(person.id === updatedPerson.id) {
                 return updatedPerson;
@@ -65,7 +65,7 @@ class App extends Component {
     }
 
     deletePerson = () => {
-        const newState = this.state;
+        const newState = JSON.parse(JSON.stringify(this.state));
         newState.people = this.state.people.filter(person => person.id !== this.state.selectedPerson.id);
         newState.view = 'PersonList';
         newState.selectedPerson = undefined;
@@ -83,7 +83,7 @@ class App extends Component {
       }
 
     saveNewPerson = (newPerson) => {
-        const newState = this.state;
+        const newState = JSON.parse(JSON.stringify(this.state));
         newPerson.id = this.guid();
         newState.people.push(newPerson);
         newState.view = 'PersonList';
