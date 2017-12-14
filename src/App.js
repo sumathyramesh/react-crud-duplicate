@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PersonList from './PersonList';
-import './App.css';
+import './styles/App.css';
 
 const uuid = require('uuid4');
 
@@ -17,7 +17,11 @@ class App extends Component {
   }
 
   render() {
-    return <PersonList people={this.state.people} />;
+    return (
+        <div className="Main">
+            <PersonList people={this.state.people} />
+        </div>
+    ); 
   }
 }
 
