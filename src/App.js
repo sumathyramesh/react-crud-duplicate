@@ -8,8 +8,8 @@ class App extends Component {
     super(props);
     this.state = {
       people: [
-        {firstName: 'Brent', lastName: 'Gardner'},
-        {firstName: 'Rachel', lastName: 'Koldenhoven'}
+        {firstName: 'Margaret', lastName: 'Hamilton'},
+        {firstName: 'Donald', lastName: 'Knuth'}
       ]
     }
   }
