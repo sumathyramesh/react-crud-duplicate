@@ -38,7 +38,7 @@ class PersonAdd extends Component {
                 onChange={this.changeLastName} /> 
                 <div className="PersonAddBtns">
                     <button className="button-primary" onClick={() => this.props.saveNewPerson(this.state)}>SAVE</button>
-                    <button className="button-primary" onClick={this.props.goHome}>CANCEL</button>
+                    <button className="button-primary" onClick={() => this.props.goHome()}>CANCEL</button>
                 </div>
             </div>
         );
