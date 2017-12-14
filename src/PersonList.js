@@ -5,7 +5,7 @@ class PersonList extends Component {
   render() {
     return (
         <ul>
-            {this.props.people.map((person) => <li>{person.firstName} {person.lastName}</li>)}
+            {this.props.people.map((person) => <li key={person.id}>{person.firstName} {person.lastName}</li>)}
         </ul>
     );
   }
