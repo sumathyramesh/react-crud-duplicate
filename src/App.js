@@ -70,7 +70,6 @@ class App extends Component {
     switch (this.state.view) {
       case 'list':
         return <PersonList
-          people={this.state.people}
           newPerson={this.createPerson}
           personSelected={p => this.personSelected(p)}
         />
