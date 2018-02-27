@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
 import PersonList from './PersonList';
 import PersonEdit from './PersonEdit';
 import './App.css';
@@ -67,11 +69,10 @@ class App extends Component {
 
   render() {
     console.log('render', this.state);
-    switch (this.state.view) {
+    switch (this.props.view) {
       case 'list':
         return <PersonList
           newPerson={this.createPerson}
-          personSelected={p => this.personSelected(p)}
         />
       case 'edit':
         return <PersonEdit
@@ -93,4 +94,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    view: state.view
+  }
+}
+
+export default connect(mapStateToProps)(App);

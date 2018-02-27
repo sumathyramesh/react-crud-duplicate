@@ -7,8 +7,22 @@ const initialState = {
     ]
 };
 
-const reducer = (state = initialState, action) => {
-    return state;
+const reducer = (state, action) => {
+    if(!state) {
+        state = initialState;
+    }
+    console.log('action!', action);
+    switch(action.type) {
+        case 'PERSON_SELECTED': return personSelected(state, action);
+        default: return state;
+    }
+}
+
+const personSelected = (state, action) => {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.view = 'edit';
+    newState.selectedPersonId = action.id;
+    return newState;
 }
 
 export default reducer;

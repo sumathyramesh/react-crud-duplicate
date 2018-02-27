@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class PersonEdit extends Component {
 
     constructor(props) {
         super(props);
-        this.state = JSON.parse(JSON.stringify(props.person));
+        const person = this.props.people.find(p => p.id === this.props.personId)
+        this.state = JSON.parse(JSON.stringify(person));
     }
 
     changed = (event) => {
@@ -42,4 +44,10 @@ class PersonEdit extends Component {
     }
 }
 
-export default PersonEdit;
+const mapStateToProps = (state) => {
+    return {
+        people: state.people,
+        personId: state.selectedPersonId
+    }
+}
+export default connect(mapStateToProps)(PersonEdit);

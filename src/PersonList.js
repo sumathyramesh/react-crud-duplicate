@@ -5,7 +5,8 @@ class PersonList extends Component {
 
     get people() {
         return this.props.people.map((person, idx) => {
-            return (<a key={idx} href="#" onClick={() => this.props.personSelected(person.id)}>
+            return (<a key={idx} href="#" 
+                onClick={() => this.props.personSelected(person.id)}>
                 <li>{person.firstName} {person.lastName}</li>
             </a>)
         });
@@ -29,4 +30,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(PersonList);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        personSelected: (id) => dispatch({type: 'PERSON_SELECTED', id})
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PersonList);
