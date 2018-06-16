@@ -3,6 +3,8 @@ import PersonList from './PersonList';
 import './styles/App.css';
 
 const uuid = require('uuid4');
+// id = uuid();
+// This will create a unique id for new persons
 
 class App extends Component {
 
