@@ -3,7 +3,7 @@ import PersonList from './PersonList';
 import PersonEdit from './PersonEdit';
 import './styles/App.css';
 
-const uuid = require('uuid4');
+//const uuid = require('uuid4');
 // id = uuid();
 // This will create a unique id for new persons
 
@@ -24,20 +24,26 @@ class App extends Component {
       }
 
      newView = (view, firstName, lastName, id)  => {
-       console.log("id in newview", id)
        this.setState({...this.state, currView: view, nameToEditFirst: firstName, nameToEditLast: lastName, idToEdit: id})
      }
 
      editPerson = (view, firstName, lastName, id)  => {
-       //console.log("id", id)
-       //this.setState({...this.state, currView: view, nameToEditFirst: firstName, nameToEditLast: lastName})
+       let editPeople = this.state.people.map((p) => {
+            if (p.id === id) {
+                return {firstName: firstName, lastName: lastName, id: id}
+            } else {
+                return p
+            }
+          })
+
+       this.setState({...this.state, currView: view, people: editPeople})
      }
 
 
     render() {
         return (
             <div className="Main">
-                {this.state.currView == "PersonList" ?
+                {this.state.currView === "PersonList" ?
                 <PersonList people={this.state.people} updateView={this.newView} /> :
                 <PersonEdit nameToEditFirst={this.state.nameToEditFirst} nameToEditLast={this.state.nameToEditLast} id={this.state.idToEdit} updatePerson={this.editPerson} />}
             </div>

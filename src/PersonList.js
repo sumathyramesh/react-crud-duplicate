@@ -6,8 +6,6 @@ class PersonList extends Component {
       super(props);
     }
 
-
-
     render() {
         return (
             <ul className="PersonList">
