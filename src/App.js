@@ -27,6 +27,10 @@ class App extends Component {
        this.setState({...this.state, currView: view, nameToEditFirst: firstName, nameToEditLast: lastName, idToEdit: id})
      }
 
+     cancelView = (view)  => {
+       this.setState({...this.state, currView: view})
+     }
+
      editPerson = (view, firstName, lastName, id)  => {
        let editPeople = this.state.people.map((p) => {
             if (p.id === id) {
@@ -45,7 +49,7 @@ class App extends Component {
             <div className="Main">
                 {this.state.currView === "PersonList" ?
                 <PersonList people={this.state.people} updateView={this.newView} /> :
-                <PersonEdit nameToEditFirst={this.state.nameToEditFirst} nameToEditLast={this.state.nameToEditLast} id={this.state.idToEdit} updatePerson={this.editPerson} />}
+                <PersonEdit nameToEditFirst={this.state.nameToEditFirst} nameToEditLast={this.state.nameToEditLast} id={this.state.idToEdit} updatePerson={this.editPerson} cancelPerson={this.cancelView}/>}
             </div>
         );
     }

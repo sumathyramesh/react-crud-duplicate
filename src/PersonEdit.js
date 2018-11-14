@@ -25,7 +25,9 @@ class PersonEdit extends Component {
             <div>
               <input type="text" value={this.state.firstName} onChange={this.handleChangeFirst}/>
               <input type="text" value={this.state.lastName} onChange={this.handleChangeLast}/>
+              <br/>
               <button onClick={() => this.props.updatePerson("PersonList", this.state.firstName, this.state.lastName, this.state.id)}>Save</button>
+              <button onClick={() => this.props.cancelPerson("PersonList")}>Cancel</button>
           </div>
         );
     }
